@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import apiService from '../../services/axios.sevices';
 import { Link } from 'react-router-dom';
+import Loading from '../spinner/spinner';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -20,7 +21,6 @@ export function Login() {
       console.error('Error fetching data:', error);
     } finally {
       setLoading(false);
-
     }
   };
 
@@ -40,15 +40,9 @@ export function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" onClick={handleSubmit}>
-        Login
+      <Button variant="primary" onClick={handleSubmit} disabled={loading}>
+        {loading ? <Loading /> : 'Login'}
       </Button>
-      {responseData && (
-        <div className="mt-3">
-          <p>Response Data:</p>
-          <pre>{JSON.stringify(responseData, null, 2)}</pre>
-        </div>
-      )}
     </Form>
       <p className='my-4'>
         You do not have an account? {''}
