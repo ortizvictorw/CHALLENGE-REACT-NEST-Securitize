@@ -5,6 +5,7 @@ import apiService from '../../services/axios.sevices';
 import { Link, useHistory } from 'react-router-dom';
 import Loading from '../spinner/spinner';
 import { LocalStorageService } from '../../services/storage'; 
+import { toast } from 'react-toastify';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -20,10 +21,11 @@ export function Login() {
       const response = await apiService.post('/auth/login', { username: email, password });
       console.log(response)
       LocalStorageService.saveData('USER-DATA', response.data)
-      setResponseData(response.data);
+      setResponseData(response.data);      
       history.push('home')
+      toast(`Welcome! ${response.data.user.username}`)
     } catch (error) {
-      console.error('Error fetching data:', error);
+      toast(`'Error fetching data:' ${error}`)
     } finally {
       setLoading(false);
     }

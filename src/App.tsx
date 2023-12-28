@@ -5,10 +5,25 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Registration } from './components/register/register';
 import CarouselBasic from './components/carousel/carousel';
 import Home from './views/home';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <BrowserRouter>
+    <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        />
       <header className="App-header App">
         <div className='my-3'>
         <CarouselBasic />

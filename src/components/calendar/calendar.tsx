@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import apiService from "../../services/axios.sevices";
 import Loading from "../spinner/spinner";
 import { LocalStorageService } from "../../services/storage";
+import { toast } from "react-toastify";
 
 export const Calendar: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -13,7 +14,6 @@ export const Calendar: React.FC = () => {
 
   useEffect(() => {
     setUserData(LocalStorageService.getData('USER-DATA'))
-    console.log(userData)
   }, [])
   
 
@@ -40,12 +40,12 @@ export const Calendar: React.FC = () => {
       const response = (await apiService.post('/reservations', data,{ headers }));
 
       if (response.data) {
-        console.log('Reserva realizada exitosamente');
+        toast(`Successful reservation!`)
       } else {
-        console.error('Error al realizar la reserva');
+        toast('reservation error');
       }
     } catch (error) {
-      console.error('Error al procesar la solicitud:', error);
+      toast('System error');
     } finally {
       setLoading(false);
     }
