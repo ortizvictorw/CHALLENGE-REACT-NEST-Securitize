@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import apiService from '../../services/axios.sevices';
 import { Link, useHistory } from 'react-router-dom';
 import Loading from '../spinner/spinner';
+import { toast } from 'react-toastify';
 
 export function Registration() {
   const [firstName, setFirstName] = useState('');
@@ -29,9 +30,9 @@ export function Registration() {
       });
       setResponseData(response.data);
       history.push('home')
-
+      toast(`Welcome! ${response.data.user.username}`)
     } catch (error) {
-      console.error('Error registering user:', error);
+      toast(`'Error fetching data:' ${error}`)
     } finally {
       setLoading(false);
     }
