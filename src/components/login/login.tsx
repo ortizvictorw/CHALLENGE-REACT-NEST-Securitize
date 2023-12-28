@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import apiService from '../../services/axios.sevices';
 import { Link, useHistory } from 'react-router-dom';
 import Loading from '../spinner/spinner';
+import { LocalStorageService } from '../../services/storage'; 
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -17,6 +18,8 @@ export function Login() {
 
     try {
       const response = await apiService.post('/auth/login', { username: email, password });
+      console.log(response)
+      LocalStorageService.saveData('USER-DATA', response.data)
       setResponseData(response.data);
       history.push('home')
     } catch (error) {

@@ -1,13 +1,21 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import apiService from "../../services/axios.sevices";
 import Loading from "../spinner/spinner";
+import { LocalStorageService } from "../../services/storage";
 
 export const Calendar: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [userData, setUserData] = useState<any>();
+
+  useEffect(() => {
+    setUserData(LocalStorageService.getData('USER-DATA'))
+    console.log(userData)
+  }, [])
+  
 
   const handleDateChange = (date: Date) => {
     setSelectedDate(date);
@@ -24,7 +32,12 @@ export const Calendar: React.FC = () => {
     try {
       const data = { date: selectedDate, phoneNumber };
 
-      const response = await apiService.post('/reservations', data);
+      const headers = {
+        Authorization: `Bearer ${userData.accessToken}`, 
+        'Content-Type': 'application/json', 
+      };
+
+      const response = (await apiService.post('/reservations', data,{ headers }));
 
       if (response.data) {
         console.log('Reserva realizada exitosamente');
