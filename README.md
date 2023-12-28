@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# Reserva para Visitar "El Campo de Dios"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Accede al proyecto aquí](https://challenge-react-securitize.onrender.com)
 
-## Available Scripts
+Esta aplicación React con TypeScript te permite reservar una fecha para visitar el predio conocido como "El Campo de Dios". Está desplegada en [Render](https://render.com/).
 
-In the project directory, you can run:
+## Tecnologías Utilizadas
 
-### `npm start`
+- React
+- TypeScript
+- Axios
+- Bootstrap
+- React Bootstrap
+- React Router DOM
+- React Toastify
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Dependencias Principales
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Las dependencias más relevantes para el funcionamiento de la aplicación son:
 
-### `npm test`
+- **React y React DOM:** Base principal de la aplicación.
+- **TypeScript:** Mejora la escritura de código al proporcionar tipos estáticos.
+- **Axios:** Para realizar solicitudes HTTP al servidor.
+- **React Router DOM:** Facilita la navegación entre páginas.
+- **React Bootstrap y Bootstrap:** Utilizados para estilos y componentes.
+- **React Toastify:** Ofrece notificaciones interactivas para la interfaz.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Uso
 
-### `npm run build`
+1. Clona este repositorio.
+2. Instala las dependencias utilizando `npm install`.
+3. Ejecuta la aplicación con `npm start`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Funcionalidades Destacadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Reserva de Fechas:** Los usuarios pueden seleccionar una fecha para visitar "El Campo de Dios".
+- **Redirección a WhatsApp:** Al realizar la reserva, se redirige al usuario al WhatsApp del encargado de las reservas para confirmar detalles o resolver consultas adicionales.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Ejecución
 
-### `npm run eject`
+Para correr la aplicación en un entorno de desarrollo:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
