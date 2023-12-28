@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import apiService from '../../services/axios.sevices';
@@ -6,8 +6,9 @@ import { Link, useHistory } from 'react-router-dom';
 import Loading from '../spinner/spinner';
 import { LocalStorageService } from '../../services/storage'; 
 import { toast } from 'react-toastify';
+import { ILoginProps } from './type';
 
-export function Login() {
+export const Login: FunctionComponent<ILoginProps> = ({ setStorageUpdated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [responseData, setResponseData] = useState(null);
@@ -19,9 +20,9 @@ export function Login() {
 
     try {
       const response = await apiService.post('/auth/login', { username: email, password });
-      console.log(response)
+      setResponseData(response.data);
       LocalStorageService.saveData('USER-DATA', response.data)
-      setResponseData(response.data);      
+      setStorageUpdated(true)      
       history.push('home')
       toast(`Welcome! ${response.data.user.username}`)
     } catch (error) {
