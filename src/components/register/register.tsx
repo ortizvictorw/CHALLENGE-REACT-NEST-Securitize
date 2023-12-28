@@ -1,23 +1,23 @@
-import React, { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import apiService from '../../services/axios.sevices';
 import { Link, useHistory } from 'react-router-dom';
 import Loading from '../spinner/spinner';
 import { toast } from 'react-toastify';
-import { IRegistrationProps } from './type';
-import { LocalStorageService } from '../../services/storage';
+import { useUserToggleContext } from '../../provider/userProvider';
 
-export const Registration: FunctionComponent<IRegistrationProps> = ({ setStorageUpdated }) => {
+export const Registration: FunctionComponent = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [responseData, setResponseData] = useState(null);
   const [loading, setLoading] = useState(false);
   const history = useHistory()
+
+  const setUser = useUserToggleContext()
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -30,10 +30,8 @@ export const Registration: FunctionComponent<IRegistrationProps> = ({ setStorage
         username,
         password,
       });
-      setResponseData(response.data);
-      LocalStorageService.saveData('USER-DATA', response.data)
-      setStorageUpdated(true)
-      history.push('home')
+      setUser(response.data);
+      history.push('login')
       toast(`Welcome! ${response.data.username}`)
     } catch (error) {
       toast(`'Error fetching data:' ${error}`)
