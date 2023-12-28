@@ -1,10 +1,10 @@
-# Reserva para Visitar "El Campo de Dios"
+# Reservation for Visiting "El Campo de Dios"
 
-[Accede al proyecto aquí](https://challenge-react-securitize.onrender.com)
+[Access the project here](https://challenge-react-securitize.onrender.com)
 
-Esta aplicación React con TypeScript te permite reservar una fecha para visitar el predio conocido como "El Campo de Dios". Está desplegada en [Render](https://render.com/).
+This React application with TypeScript allows you to reserve a date to visit the property known as "El Campo de Dios." It's deployed on [Render](https://render.com/).
 
-## Tecnologías Utilizadas
+## Technologies Used
 
 - React
 - TypeScript
@@ -14,31 +14,31 @@ Esta aplicación React con TypeScript te permite reservar una fecha para visitar
 - React Router DOM
 - React Toastify
 
-## Dependencias Principales
+## Main Dependencies
 
-Las dependencias más relevantes para el funcionamiento de la aplicación son:
+The most relevant dependencies for the application to function are:
 
-- **React y React DOM:** Base principal de la aplicación.
-- **TypeScript:** Mejora la escritura de código al proporcionar tipos estáticos.
-- **Axios:** Para realizar solicitudes HTTP al servidor.
-- **React Router DOM:** Facilita la navegación entre páginas.
-- **React Bootstrap y Bootstrap:** Utilizados para estilos y componentes.
-- **React Toastify:** Ofrece notificaciones interactivas para la interfaz.
+- **React and React DOM:** Primary foundation of the application.
+- **TypeScript:** Enhances code writing by providing static types.
+- **Axios:** Used for making HTTP requests to the server.
+- **React Router DOM:** Facilitates navigation between pages.
+- **React Bootstrap and Bootstrap:** Utilized for styles and components.
+- **React Toastify:** Provides interactive notifications for the interface.
 
-## Uso
+## Usage
 
-1. Clona este repositorio.
-2. Instala las dependencias utilizando `npm install`.
-3. Ejecuta la aplicación con `npm start`.
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Run the application with `npm start`.
 
-## Funcionalidades Destacadas
+## Key Features
 
-- **Reserva de Fechas:** Los usuarios pueden seleccionar una fecha para visitar "El Campo de Dios".
-- **Redirección a WhatsApp:** Al realizar la reserva, se redirige al usuario al WhatsApp del encargado de las reservas para confirmar detalles o resolver consultas adicionales.
+- **Date Reservation:** Users can select a date to visit "El Campo de Dios."
+- **WhatsApp Redirection:** Upon making a reservation, users are redirected to the WhatsApp of the reservation manager to confirm details or address additional inquiries.
 
-## Ejecución
+## Execution
 
-Para correr la aplicación en un entorno de desarrollo:
+To run the application in a development environment:
 
 ```bash
 npm start
