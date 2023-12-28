@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FunctionComponent, useCallback, useEffect } from "react";
+import { useState, ChangeEvent, FunctionComponent, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import apiService from "../../services/axios.sevices";
@@ -6,6 +6,7 @@ import Loading from "../spinner/spinner";
 import { toast } from "react-toastify";
 import { useUserContext, useUserToggleContext } from "../../provider/userProvider";
 import { useHistory } from "react-router-dom";
+import WhatsAppService from "../../services/whatsappWitdget";
 
 export const Calendar: FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
@@ -13,12 +14,12 @@ export const Calendar: FunctionComponent = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const history = useHistory()
   
-  const user = useUserContext()
+  const dataUSer = useUserContext()
   const setUser = useUserToggleContext()
   
     useEffect(() => {
-      !user && history.push('login')
-    }, [history, user])
+      !dataUSer.user && history.push('login')
+    }, [history, dataUSer])
 
   const clearState = () => {
     setSelectedDate(new Date())
@@ -45,11 +46,16 @@ export const Calendar: FunctionComponent = () => {
       const data = { date: selectedDate, phoneNumber };
 
       const headers = {
-        Authorization: `Bearer ${user.accessToken}`,
+        Authorization: `Bearer ${dataUSer.accessToken}`,
         'Content-Type': 'application/json',
       };
       const response = (await apiService.post('/reservations', data, { headers }));
-
+      const fullName = `${dataUSer.user.firstName} ${dataUSer.user.lastName}`;
+      const formattedDate = new Date(selectedDate).toDateString(); 
+  
+      const reservationMessage = `Hello ${fullName}! I've just booked a visit to God's Country for ${formattedDate}.`;  
+      const whatsappLink =  WhatsAppService.generateWhatsAppLink({ phoneNumber: process.env.REACT_APP_PHONE, message:reservationMessage });
+      window.open(whatsappLink, '_blank');
       if (response.data) {
         toast(`Successful reservation!`)
       } else {
